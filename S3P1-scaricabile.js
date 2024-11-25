@@ -278,6 +278,12 @@ risposta5.appendChild(random)
 
 document.getElementById("giveMeRandom").addEventListener("click", giveMeRandom2 = () => {
     let num5 = parseInt(document.getElementById("num5").value);
+
+    // controlla che il numero sia compreso tra 0 e 10
+    if (num5 <= 0 || num5 > 10) {
+        random.innerHTML = "<p>Per favore, inserisci un numero valido compreso tra 0 e 10.</p>";
+        return;
+    }
     num5 = giveMeRandom(num5);
     document.getElementById("num5").value = "";
     random.innerHTML = `<p> ${num5} </p>`
