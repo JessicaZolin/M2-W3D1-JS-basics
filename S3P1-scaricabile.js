@@ -21,7 +21,7 @@ const crazySum = (a, b) => {
 // ------- crea elemento HTML per stampare risposta
 
 let somma = document.createElement("div")
-somma.classList = "risposta"
+somma.classList = "risposta mt-2"
 let risposta1 = document.getElementById("esercizio1")
 risposta1.appendChild(somma)
 
@@ -89,7 +89,7 @@ console.log(boundary (200));
 // ------- crea elemento HTML per stampare risposta
 
 let controllo = document.createElement("div")
-controllo.classList = "risposta"
+controllo.classList = "risposta mt-2"
 let risposta2 = document.getElementById("esercizio2")
 risposta2.appendChild(controllo)
 
@@ -152,7 +152,7 @@ console.log(reverseString("EPICODE"))
 // ------- crea elemento HTML per stampare risposta
 
 let parolaInvertita = document.createElement("div")
-parolaInvertita.classList = "risposta"
+parolaInvertita.classList = "risposta mt-2"
 let risposta3 = document.getElementById("esercizio3")
 risposta3.appendChild(parolaInvertita)
 
@@ -213,7 +213,7 @@ console.log(upperFirst("oggi è una bella giornata"))
 // ------- crea elemento HTML per stampare risposta
 
 let lettereMaiuscole = document.createElement("div")
-lettereMaiuscole.classList = "risposta"
+lettereMaiuscole.classList = "risposta mt-2"
 let risposta4 = document.getElementById("esercizio4")
 risposta4.appendChild(lettereMaiuscole)
 
@@ -270,7 +270,7 @@ console.log(giveMeRandom(5))
 // ------- crea elemento HTML per stampare risposta
 
 let random = document.createElement("div")
-random.classList = "risposta"
+random.classList = "risposta mt-2"
 let risposta5 = document.getElementById("esercizio5")
 risposta5.appendChild(random)
 
@@ -310,6 +310,40 @@ document.getElementById("giveMeRandom").addEventListener("click", giveMeRandom2 
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
+// ------- dichiara funzione generale
+
+const area = (a, b) => {
+    if (isNaN(a) || isNaN(b)) {
+        return `<span class="text-danger">Error</span>: Inserisci due numeri validi.`
+    }
+    console.log(a*b);
+    
+    return a*b
+}
+
+console.log(area(5,7))
+
+
+// ------- crea elemento HTML per stampare risposta
+
+let calcoloArea = document.createElement("div")
+calcoloArea.classList = "risposta mt-2"
+let rispostaExtra1 = document.getElementById("esercizio-extra1")
+rispostaExtra1.appendChild(calcoloArea)
+
+// ----- interazione con HTML
+
+document.getElementById("area").addEventListener("click", () => {
+    let num6 = parseInt(document.getElementById("num6").value);
+    let num7 = parseInt(document.getElementById("num7").value)
+
+    let areaRettangolo = area(num6, num7);
+    document.getElementById("num6").value = "";
+    document.getElementById("num7").value = "";
+    calcoloArea.innerHTML = `<p>L'area del rettangolo è pari a ${areaRettangolo}</p>`
+})
+
 
 /* ESERCIZIO 2
  Scrivi una funzione chiamata "crazyDiff" che calcola la differenza assoluta tra un numero fornito e 19.
