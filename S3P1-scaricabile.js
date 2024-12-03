@@ -83,7 +83,7 @@ const boundary = (a) => {
     }
 }
 
-console.log(boundary (200));
+console.log(boundary(200));
 
 
 // ------- crea elemento HTML per stampare risposta
@@ -135,15 +135,15 @@ document.getElementById("boundary").addEventListener("click", boundary2 = () => 
 // ------- dichiara funzione generale
 
 const reverseString = (frase) => {
-/*  let fraseSplit = frase.split("");
- console.log(fraseSplit);
- let fraseReverse = fraseSplit.reverse();
- console.log(fraseReverse);
- let fraseJoin = fraseReverse.join("")
- console.log(fraseJoin);
- return fraseJoin */
- 
-return frase.split("").reverse().join("");
+    /*  let fraseSplit = frase.split("");
+     console.log(fraseSplit);
+     let fraseReverse = fraseSplit.reverse();
+     console.log(fraseReverse);
+     let fraseJoin = fraseReverse.join("")
+     console.log(fraseJoin);
+     return fraseJoin */
+
+    return frase.split("").reverse().join("");
 }
 
 console.log(reverseString("EPICODE"))
@@ -199,12 +199,12 @@ const upperFirst = (frase) => {
     // ----- separa le parole tramite spazi e le mette in array
     let fraseSplit = frase.split(" ")
     // ----- cicla tutti gli elementi dell'array
-    for (let i = 0; i < fraseSplit.length; i++ ) {
+    for (let i = 0; i < fraseSplit.length; i++) {
         // ----- rende maiuscola la prima lettera di ogni parola (CharAt) e aggiunge la parte restante minuscola (substr.)
         fraseSplit[i] = fraseSplit[i][0].toUpperCase() + fraseSplit[i].substr(1)
     }
 
-    return fraseSplit.join(" ")    
+    return fraseSplit.join(" ")
 }
 
 console.log(upperFirst("oggi è una bella giornata"))
@@ -223,7 +223,7 @@ document.getElementById("upperFirst").addEventListener("click", upperFirst2 = ()
     let frase = document.getElementById("frase").value.toLowerCase()            //----- prende valore da input cliente e lo rende minuscolo
     frase = upperFirst(frase)
     document.getElementById("frase").value = "";
-    lettereMaiuscole.innerHTML = "<p> Ecco la frase: <b><i><u>" + frase+ "</u></i></b>.</p>"
+    lettereMaiuscole.innerHTML = "<p> Ecco la frase: <b><i><u>" + frase + "</u></i></b>.</p>"
 })
 
 
@@ -317,12 +317,11 @@ const area = (a, b) => {
     if (isNaN(a) || isNaN(b)) {
         return `<span class="text-danger">Error</span>: Inserisci due numeri validi.`
     }
-    console.log(a*b);
-    
-    return a*b
+    // calcola area rettandolo
+    return a * b
 }
 
-console.log(area(5,7))
+console.log(area(5, 7))
 
 
 // ------- crea elemento HTML per stampare risposta
@@ -352,12 +351,88 @@ document.getElementById("area").addEventListener("click", () => {
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+// ------- dichiara funzione generale
+
+const crazyDiff = (a) => {
+    if (isNaN(a) || a < 0) {
+        return `<span class="text-danger">Error</span>: Inserisci un numero valido maggiore di 0.`
+    }
+
+    if (a < 19) {
+        let result = 19 - a
+        return `<p>La differenza assoluta è pari a <span class="fw-bold">${result}</span>`
+
+    } else {
+        let resultParz = a - 19
+        if (resultParz > 19) {
+            result = resultParz * 3
+        }
+        return `<p>La differenza assoluta di <span class="fw-bold">${resultParz}</span> è maggiore di 19 e moltiplicata per 3 è pari a <span class="fw-bold">${result}</span></p>`
+    }
+}
+
+console.log(crazyDiff(50))
+
+
+// ------- crea elemento HTML per stampare risposta
+
+let calcolaDiff = document.createElement("div")
+calcolaDiff.classList = "risposta mt-2"
+let rispostaExtra2 = document.getElementById("esercizio-extra2")
+rispostaExtra2.appendChild(calcolaDiff)
+
+// ----- interazione con HTML
+
+document.getElementById("crazyDiff").addEventListener("click", () => {
+    let num8 = parseInt(document.getElementById("num8").value);
+
+    let diffAssol = crazyDiff(num8);
+    document.getElementById("num8").value = "";
+    calcolaDiff.innerHTML = `${diffAssol}`
+})
+
+
+
 /* ESERCIZIO 3
  Scrivi una funzione chiamata "codify" che accetta una stringa come parametro.
  La funzione deve aggiungere la parola "code" all'inizio della stringa fornita e ritornare il risultato, ma se la stringa fornita comincia proprio con "code" allora deve ritornarla senza modifiche.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
+// ------- dichiara funzione generale
+
+const codify = (a) => {
+    if (a.startsWith("code")) {
+        return `<p>La frase è: <span class="fw-bold">${a}</span>`
+
+    } else {
+        return `<p>La frase è: <span class="fw-bold">${"code" + a}</p>`
+    }
+}
+
+console.log(codify("codesto"))
+
+
+// ------- crea elemento HTML per stampare risposta
+
+let stringCode = document.createElement("div")
+stringCode.classList = "risposta mt-2"
+let rispostaExtra3 = document.getElementById("esercizio-extra3")
+rispostaExtra3.appendChild(stringCode)
+
+// ----- interazione con HTML
+
+document.getElementById("codify").addEventListener("click", () => {
+    let parola2 = document.getElementById("parola2").value;
+
+    let codifica = codify(parola2);
+    document.getElementById("parola2").value = "";
+    stringCode.innerHTML = `${codifica}` 
+})
+
+
+
 
 /* ESERCIZIO 4
  Scrivi una funzione chiamata "check3and7" la quale accetta un numero intero positivo come parametro.
@@ -367,8 +442,75 @@ document.getElementById("area").addEventListener("click", () => {
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+// ------- dichiara funzione generale
+
+const check3and7 = (a) => {
+    if (isNaN(a) || a < 0) {
+        return `<span class="text-danger">Error</span>: Inserisci un numero valido maggiore di 0.`
+    }
+    
+    if (a % 3 === 0 && a % 7 === 0) {
+        return `<p><span class="text-success fw-bold">True</span>: <span class="fw-bold">${a}</span> è un multiplo di 3 e di 7</p>`
+    } else if (a % 3 === 0) {
+        return `<p><span class="text-success fw-bold">True</span>: <span class="fw-bold">${a}</span> è un multiplo di 3</p>`
+    } else if (a % 7 === 0) {
+        return `<p><span class="text-success fw-bold">True</span>: <span class="fw-bold">${a}</span> è un multiplo di 7</p>`
+    } else {
+        return `<p><span class="text-danger fw-bold">False</span>: <span class="fw-bold">${a}</span> NON è multiplo di 3 o di 7</p>`
+    }
+}
+
+console.log(check3and7(21))
+
+
+// ------- crea elemento HTML per stampare risposta
+
+let check = document.createElement("div")
+check.classList = "risposta mt-2"
+let rispostaExtra4 = document.getElementById("esercizio-extra4")
+rispostaExtra4.appendChild(check)
+
+// ----- interazione con HTML
+
+document.getElementById("check3and7").addEventListener("click", () => {
+    let num9 = parseInt(document.getElementById("num9").value);
+
+    let checkMult = check3and7(num9);
+    document.getElementById("num9").value = "";
+    check.innerHTML = `${checkMult}`
+})
+
+
+
+
 /* ESERCIZIO 5
  Scrivi una funzione chiamata "cutString", che accetta una stringa come parametro e la ritorna senza il primo e l'ultimo carattere.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const cutString = (a) => {
+    a.slice(1, a.length - 1)
+    return `<p>La parola senza il primo e l'ultimo carattere è uguale a: <span class="fw-bold">${(a.slice(1, a.length - 1))}</span></p>`;
+    
+}
+
+console.log(cutString("ciao"))
+
+
+// ------- crea elemento HTML per stampare risposta
+
+let taglia = document.createElement("div")
+taglia.classList = "risposta mt-2"
+let rispostaExtra5 = document.getElementById("esercizio-extra5")
+rispostaExtra5.appendChild(taglia)
+
+// ----- interazione con HTML
+
+document.getElementById("cutString").addEventListener("click", () => {
+    let parola3 = document.getElementById("parola3").value;
+
+    let tagliaPal = cutString(parola3);
+    document.getElementById("parola3").value = "";
+    taglia.innerHTML = `${tagliaPal}`
+})
+
